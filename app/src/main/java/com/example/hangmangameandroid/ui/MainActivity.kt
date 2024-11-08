@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hangmangameandroid.R
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +46,19 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, WordsActivity::class.java)
             startActivity(intent)
         }
+
+        val exitButton = findViewById<Button>(R.id.exitButton)
+        exitButton.setOnClickListener {
+            // Exit the app
+            exitProcess(0)
+        }
+
+        // prevents the user from going back to the previous activity
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Do nothing or provide custom behavior
+            }
+        })
     }
 }
 

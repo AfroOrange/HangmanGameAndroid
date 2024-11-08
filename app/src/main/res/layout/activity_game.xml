@@ -32,21 +32,21 @@
         android:layout_height="240dp"
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/resetGameButton"
         app:srcCompat="@drawable/image1" />
 
     <EditText
         android:id="@+id/wordGuesserField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_width="295dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="140dp"
         android:ems="10"
+        android:hint="@string/introduce_a_letter_or_the_word"
         android:inputType="text"
-        android:text="Introduce a letter/word"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hangmanImage" />
 
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="116dp"
+        android:layout_marginEnd="104dp"
         android:text="Solve"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wordGuesserField" />
@@ -77,9 +77,10 @@
         android:layout_height="53dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="458dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="442dp" />
 
     <TextView
         android:id="@+id/livesField"
@@ -87,7 +88,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
-        android:text="Lives left: 9"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="144dp"
+        android:text="Main Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
