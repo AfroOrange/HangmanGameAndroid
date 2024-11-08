@@ -1,0 +1,5 @@
+<resources>
+    <string name="login">Login</string>
+    <string name="hangman_game">HANGMAN GAME</string>
+    <string name="introduce_your_nickname">Introduce your nickname</string>
+</resources>
