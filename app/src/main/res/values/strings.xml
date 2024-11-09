@@ -3,4 +3,7 @@
     <string name="hangman_game">HANGMAN GAME</string>
     <string name="introduce_your_nickname">Introduce your nickname</string>
     <string name="introduce_a_letter_or_the_word">Introduce a letter or the word</string>
+    <string name="score">Score</string>
+    <string name="username">Username</string>
+    <string name="words_list">Words List</string>
 </resources>

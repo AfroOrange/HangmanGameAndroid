@@ -1,4 +1,4 @@
-package com.example.hangmangameandroid.ui
+package com.example.hangmangameandroid.adapters
 
 import android.view.LayoutInflater
 import android.view.View

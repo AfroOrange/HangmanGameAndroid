@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hangmangameandroid.R
+import com.example.hangmangameandroid.adapters.UserAdapter
 import com.example.hangmangameandroid.model.FileUtils
 
 class ScoreboardActivity : AppCompatActivity() {
