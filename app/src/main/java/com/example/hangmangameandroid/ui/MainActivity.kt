@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
         // prevents the user from going back to the previous activity
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                // Do nothing or provide custom behavior
             }
         })
     }

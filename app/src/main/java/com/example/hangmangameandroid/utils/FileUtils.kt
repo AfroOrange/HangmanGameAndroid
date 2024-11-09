@@ -1,6 +1,7 @@
-package com.example.hangmangameandroid.model
+package com.example.hangmangameandroid.utils
 
 import android.content.Context
+import com.example.hangmangameandroid.model.Users
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.File
@@ -47,5 +48,13 @@ object FileUtils {
         Gson().toJson(words, writer)
         writer.flush()
         writer.close()
+    }
+
+    fun readWordsFromFile(filePath: String): List<String> {
+        val file = File(filePath)
+        if (file.exists()) {
+            return file.readLines()
+        }
+        return emptyList()
     }
 }

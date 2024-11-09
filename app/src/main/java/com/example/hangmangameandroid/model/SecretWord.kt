@@ -39,4 +39,8 @@ class SecretWord(private val word: String) {
         hiddenWord = newHiddenWord.toString() // Update the hidden word string
         return appearances
     }
+
+    fun getHiddenWord(): CharSequence {
+        return hiddenWord
+    }
 }

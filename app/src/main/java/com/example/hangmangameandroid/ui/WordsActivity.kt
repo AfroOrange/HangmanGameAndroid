@@ -1,6 +1,10 @@
+// WordsActivity.kt
 package com.example.hangmangameandroid.ui
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
@@ -12,7 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hangmangameandroid.R
 import com.example.hangmangameandroid.adapters.WordsAdapter
-import com.example.hangmangameandroid.model.FileUtils
+import com.example.hangmangameandroid.utils.FileUtils
 
 class WordsActivity : AppCompatActivity() {
 
@@ -22,6 +26,7 @@ class WordsActivity : AppCompatActivity() {
     private lateinit var wordsAdapter: WordsAdapter
     private lateinit var wordList: MutableList<String>
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_words)
@@ -30,7 +35,14 @@ class WordsActivity : AppCompatActivity() {
         addWordField = findViewById(R.id.addWordField)
         wordsListView = findViewById(R.id.wordsList)
 
-        wordList = FileUtils.readWords(this)
+        try {
+            wordList = FileUtils.readWords(this)
+            Log.d("WordsActivity", "Word list loaded: $wordList")
+        } catch (e: Exception) {
+            Log.e("WordsActivity", "Error loading word list: ${e.message}", e)
+            wordList = mutableListOf()
+        }
+
         wordsAdapter = WordsAdapter(this, wordList)
         wordsListView.adapter = wordsAdapter
 
@@ -49,16 +61,26 @@ class WordsActivity : AppCompatActivity() {
 
     // Add word to JSON file
     private fun addWordToJson(word: String) {
-        val words = FileUtils.readWords(this)
-        words.add(word)
-        FileUtils.writeWords(this, words)
+        try {
+            val words = FileUtils.readWords(this)
+            words.add(word)
+            FileUtils.writeWords(this, words)
+            Log.d("WordsActivity", "Word added to JSON: $word")
+        } catch (e: Exception) {
+            Log.e("WordsActivity", "Error adding word to JSON: ${e.message}", e)
+        }
     }
 
     // Remove word from JSON file
     private fun removeWordFromJson(word: String) {
-        val words = FileUtils.readWords(this)
-        words.remove(word)
-        FileUtils.writeWords(this, words)
+        try {
+            val words = FileUtils.readWords(this)
+            words.remove(word)
+            FileUtils.writeWords(this, words)
+            Log.d("WordsActivity", "Word removed from JSON: $word")
+        } catch (e: Exception) {
+            Log.e("WordsActivity", "Error removing word from JSON: ${e.message}", e)
+        }
     }
 
     // Register ListView for context menu

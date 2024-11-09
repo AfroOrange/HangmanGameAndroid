@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hangmangameandroid.R
 import com.example.hangmangameandroid.adapters.UserAdapter
-import com.example.hangmangameandroid.model.FileUtils
+import com.example.hangmangameandroid.utils.FileUtils
 
 class ScoreboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
