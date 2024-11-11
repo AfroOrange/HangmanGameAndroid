@@ -23,6 +23,15 @@ class SecretWord(public val word: String) {
         }
     }
 
+    fun guessWord(word: String): Boolean {
+        if (word == this.word) {
+            hiddenWord = this.word
+            return true
+        } else {
+            return false
+        }
+    }
+
     fun guessLetter(letter: Char): Int {
         var appearances = 0
         val newHiddenWord = StringBuilder(hiddenWord)

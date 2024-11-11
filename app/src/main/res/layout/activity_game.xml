@@ -1,11 +1,12 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8d94d9"
-    tools:context=".ui.GameActivity">
+    tools:context=".ui.GameActivity"
+    tools:layout_editor_absoluteX="-132dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <Button
         android:id="@+id/newGameButton"
@@ -22,11 +23,10 @@
         android:id="@+id/hangmanImage"
         android:layout_width="263dp"
         android:layout_height="250dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/newGameButton"
+        app:layout_constraintTop_toBottomOf="@+id/mainMenuButton"
         app:srcCompat="@drawable/image1" />
 
     <EditText
@@ -37,6 +37,7 @@
         android:ems="10"
         android:hint="@string/introduce_a_letter_or_the_word"
         android:inputType="text"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hangmanImage" />
@@ -79,32 +80,33 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/livesField"
-        android:layout_width="291dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="76dp"
+        android:id="@+id/healthBar"
+        android:layout_width="195dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/nicknameField" />
 
     <Button
         android:id="@+id/mainMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="152dp"
+        android:layout_marginEnd="144dp"
         android:text="Main Menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nicknameField"
-        android:layout_width="102dp"
-        android:layout_height="24dp"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="44dp"
         android:text=""
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,11 +115,42 @@
         android:layout_width="407dp"
         android:layout_height="62dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text=""
         android:textAlignment="center"
         android:textSize="30sp"
-        android:gravity="center"
-        android:text="a b"
         app:layout_constraintBottom_toTopOf="@+id/wordGuesserField"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hiddenWordField" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="54dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:text="Score"
+        app:layout_constraintEnd_toStartOf="@+id/scoreField"
+        app:layout_constraintTop_toBottomOf="@+id/newGameButton" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Lives:"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nicknameField" />
+
+    <TextView
+        android:id="@+id/scoreField"
+        android:layout_width="22dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newGameButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

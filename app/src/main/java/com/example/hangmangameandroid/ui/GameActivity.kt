@@ -1,4 +1,3 @@
-// GameActivity.kt
 package com.example.hangmangameandroid.ui
 
 import android.annotation.SuppressLint
@@ -20,43 +19,47 @@ import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {
 
+    // Variables
     private lateinit var wordList: List<String>
-    private var guessedList = mutableListOf(String())
+    private var guessedList = mutableListOf<String>()
     private lateinit var secretWord: SecretWord
-    private lateinit var imagesContainer : ImagesContainer
+    private lateinit var imagesContainer: ImagesContainer
     private var imageIndex = 1
+
+    // UI elements
+    private lateinit var mainMenuButton: Button
+    private lateinit var letterButton: Button
+    private lateinit var solveButton: Button
+    private lateinit var wordGuesserField: EditText
+    private lateinit var newGameButton: Button
+    private lateinit var healthBar: TextView
+    private lateinit var scoreField: TextView
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
+        // Initialize the UI elements
+        letterButton = findViewById(R.id.letterButton)
+        solveButton = findViewById(R.id.solveButton)
+        wordGuesserField = findViewById(R.id.wordGuesserField)
+        newGameButton = findViewById(R.id.newGameButton)
+        healthBar = findViewById(R.id.healthBar)
+        scoreField = findViewById(R.id.scoreField)
+        mainMenuButton = findViewById(R.id.mainMenuButton)
+
+        // Initialize the images container
+        imagesContainer = ImagesContainer(this)
+
+        // Get the nickname passed from the MainActivity
         val nickname = intent.getStringExtra("NICKNAME")
         if (nickname != null) {
             val nicknameTextView = findViewById<TextView>(R.id.nicknameField)
             nicknameTextView.text = "Player: $nickname"
         }
 
-        imagesContainer = ImagesContainer(this)
-
-        val newGame = findViewById<Button>(R.id.newGameButton)
-        newGame.setOnClickListener {
-            startGame()
-        }
-
-        // this code block is used to prevent the user from going back to the previous activity
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-            }
-        })
-
-        val mainMenuButton = findViewById<Button>(R.id.mainMenuButton)
-        mainMenuButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
-        // Read the word list from words.json file
+        // Read the word list from words.json file to use in the game
         try {
             wordList = FileUtils.readWords(this)
             Log.d("GameActivity", "Word list loaded: $wordList")
@@ -65,40 +68,88 @@ class GameActivity : AppCompatActivity() {
             Log.e("GameActivity", "Error loading word list: ${e.message}", e)
         }
 
-        // handle the letter button click
-        val letterButton = findViewById<Button>(R.id.letterButton)
+        // Prevent the user from going back to the previous activity
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // prevent the user from going back to the previous activity
+            }
+        })
+
+        // BUTTONS
+        newGameButton.setOnClickListener {
+            startGame()
+        }
+
+        // button to go back to the main menu
+        mainMenuButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        // button to guess a letter
         letterButton.setOnClickListener {
             tryLetter()
         }
+
+        // button to try solve the word
+        solveButton.setOnClickListener {
+            trySolve()
+        }
     }
 
-    // FUNCTIONS
+    // Logic for guessing the word
+    private fun trySolve() {
+        val wordInput = findViewById<EditText>(R.id.wordGuesserField)
+        val wordGuessed = wordInput.text.toString()
+        var score = scoreField.text.toString().toInt()
 
-    //logic for guessing the word
+        if (secretWord.guessWord(wordGuessed)) {
+            score += 1
+            findViewById<TextView>(R.id.hiddenWordField).text = "You won!"
+            gameOver()
+
+        } else {
+            healthBarUpdate()
+            imageIndex += 1
+            findViewById<ImageView>(R.id.hangmanImage).setImageDrawable(imagesContainer.getImage(imageIndex))
+
+            if (imageIndex == 9) {
+                gameOver()
+                findViewById<TextView>(R.id.hiddenWordField).text = "The word was: ${secretWord.word}"
+            }
+        }
+    }
+
+    // Logic for guessing the word
     private fun tryLetter() {
-        val letterInput = findViewById<TextView>(R.id.wordGuesserField)
+        val letterInput = findViewById<EditText>(R.id.wordGuesserField)
         val letterGuessed = letterInput.text.toString().firstOrNull()
+        var score = scoreField.text.toString().toInt()
 
         if (letterGuessed != null) {
             if (!guessedList.contains(letterGuessed.toString())) {
                 if (secretWord.guessLetter(letterGuessed) == 0) {
+                    // Update the index and the health bar
                     imageIndex += 1
+                    healthBarUpdate()
+
                     Log.d("!=!=!=!", "ImageIndex at the moment: $imageIndex")
                     if (imageIndex <= 9) {
                         findViewById<ImageView>(R.id.hangmanImage).setImageDrawable(imagesContainer.getImage(imageIndex))
                     }
 
                     if (imageIndex == 9) {
-                        // gameOverAlert()
+                        gameOver()
                         findViewById<TextView>(R.id.hiddenWordField).text = "The word was: ${secretWord.word}"
                     }
                 } else {
                     secretWord.updateHiddenWord()
                     findViewById<TextView>(R.id.hiddenWordField).text = secretWord.hiddenWord
+                    score += 1
 
                     if (!secretWord.hiddenWord.contains('_')) {
-//                        gameOverAlert()
                         findViewById<TextView>(R.id.hiddenWordField).text = "You won!"
+                        gameOver()
                     }
                 }
                 guessedList.add(letterGuessed.toString())
@@ -112,16 +163,24 @@ class GameActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter a valid letter", Toast.LENGTH_SHORT).show()
             Log.d("GameActivity", "No letter entered")
         }
+        // Clear the input field
+        wordGuesserField.text.clear()
+        scoreField.text = score.toString()
     }
 
-    private fun gameOverAlert() {
-        TODO("Not yet implemented")
+    // Logic for ending the game
+    private fun gameOver() {
+        letterButton.visibility = Button.INVISIBLE
+        solveButton.visibility = Button.INVISIBLE
+        wordGuesserField.visibility = EditText.INVISIBLE
+        newGameButton.visibility = Button.VISIBLE
     }
 
-    //logic for starting a new gam
+    // Logic for starting a new game
     private fun startGame() {
-        findViewById<TextView>(R.id.livesField).text = "Lives: \uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4"
+        healthBar.text = "\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4"
         findViewById<ImageView>(R.id.hangmanImage).setImageResource(R.drawable.image1)
+        scoreField.text = "0"
 
         try {
             val word = getRandomWord()
@@ -135,17 +194,38 @@ class GameActivity : AppCompatActivity() {
             Log.e("GameActivity", "Error in startGame: ${e.message}", e)
         }
 
-        findViewById<Button>(R.id.letterButton).visibility = Button.VISIBLE
-        findViewById<Button>(R.id.solveButton).visibility = Button.VISIBLE
+        // Clear the guessed list
+        guessedList.clear()
+        findViewById<TextView>(R.id.guessedWordList).text = ""
+
+        // Set the image index to 1
+        imageIndex = 1
+
+        // Make the letter button, solve button, and word guesser field visible
+        letterButton.visibility = Button.VISIBLE
+        solveButton.visibility = Button.VISIBLE
+        wordGuesserField.visibility = EditText.VISIBLE
+
+        // Make the new game button invisible
+        newGameButton.visibility = Button.INVISIBLE
     }
 
-    //logic for getting a random word from the word list
+    // Logic for getting a random word from the word list
     private fun getRandomWord(): String {
         if (wordList.isNotEmpty()) {
             val randomIndex = Random.nextInt(wordList.size)
             return wordList[randomIndex]
         } else {
             throw IllegalStateException("Word list is empty")
+        }
+    }
+
+    // Logic for updating the health bar
+    private fun healthBarUpdate() {
+
+        // Check if the health bar text is not empty before trimming the last character
+        if (healthBar.text.isNotEmpty()) {
+            healthBar.text = healthBar.text.dropLast(2) // Drop the last heart emoji
         }
     }
 }
