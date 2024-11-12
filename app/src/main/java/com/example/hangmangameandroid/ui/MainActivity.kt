@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hangmangameandroid.R
+import com.example.hangmangameandroid.utils.FileUtils
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
@@ -16,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val nickname =
-            intent.getStringExtra("NICKNAME")  // Get the nickname passed from LoginActivity
+        val nickname = intent.getStringExtra("NICKNAME")  // Get the nickname passed from LoginActivity
         if (nickname != null) {
             // Do something with the nickname (e.g., display it in a TextView)
             val welcomeTextView = findViewById<TextView>(R.id.welcomeText)
@@ -27,10 +28,21 @@ class MainActivity : AppCompatActivity() {
         // actions for the buttons
         val playButton = findViewById<Button>(R.id.newGameButton)
         playButton.setOnClickListener {
-            // Start the GameActivity
-            val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("NICKNAME", nickname)  // Pass the nickname to GameActivity
-            startActivity(intent)
+
+            //check if there are words in the json before playing the game
+            val words = FileUtils.readWords(this)
+            if (words.isEmpty()) {
+                // Show a message if there are no words
+                val toast = "Please add words in the Words menu"
+                Toast.makeText(this, toast, Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+
+            } else {
+                // Start the GameActivity
+                val intent = Intent(this, GameActivity::class.java)
+                intent.putExtra("NICKNAME", nickname)  // Pass the nickname to GameActivity
+                startActivity(intent)
+            }
         }
 
         val scoreboardButton = findViewById<Button>(R.id.scoreboardButton)

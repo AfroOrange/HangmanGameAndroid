@@ -83,6 +83,7 @@ class GameActivity : AppCompatActivity() {
         // button to go back to the main menu
         mainMenuButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("NICKNAME", nickname)
             startActivity(intent)
         }
 
@@ -104,15 +105,25 @@ class GameActivity : AppCompatActivity() {
         var score = scoreField.text.toString().toInt()
 
         if (secretWord.guessWord(wordGuessed)) {
-            score += 1
+            score += 50
+            scoreField.text = score.toString()
             findViewById<TextView>(R.id.hiddenWordField).text = "You won!"
             gameOver()
 
         } else {
+
+            // subtract 1 from the score
+            score -= 1
+            if (score >= 1) {
+                scoreField.text = score.toString()
+            }
+
+            // Update the index and the health bar
             healthBarUpdate()
             imageIndex += 1
             findViewById<ImageView>(R.id.hangmanImage).setImageDrawable(imagesContainer.getImage(imageIndex))
 
+            // if the image index is 9, the game is over
             if (imageIndex == 9) {
                 gameOver()
                 findViewById<TextView>(R.id.hiddenWordField).text = "The word was: ${secretWord.word}"
