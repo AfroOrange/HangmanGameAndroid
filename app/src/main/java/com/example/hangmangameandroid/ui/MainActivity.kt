@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         val exitButton = findViewById<Button>(R.id.exitButton)
         exitButton.setOnClickListener {
             // Exit the app
-            exitProcess(0)
+            finishAffinity()
         }
 
         // prevents the user from going back to the previous activity
