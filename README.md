@@ -6,11 +6,11 @@ This is an Android application for the classic Hangman game. The game allows pla
 ## Features
 - Login screen to enter a player nickname
 
-![Login Screen](screenshots/login_screenshot.jpg)
+<img src="screenshots/login_screenshot.jpg" width="300" alt="">
 
 - Navigate through the main menu to start a new game, view high scores, or manage the word list
 
-![Main Menu](screenshots/mainmenu_screenshot.jpg)
+<img src="screenshots/mainmenu_screenshot.jpg" width="300" alt="">
 
 - Start a new game with a random word from the word list
 - Guess letters to uncover the hidden word
@@ -19,7 +19,7 @@ This is an Android application for the classic Hangman game. The game allows pla
 - Show the hidden word when the game is over
 - Option to start a new game
 
-![Game Screen](screenshots/game_screenshot.jpg)
+<img src="screenshots/game_screenshot.jpg" width="300" alt="">
 
 - Display a list of high scores
 - Save high scores to a local database
@@ -27,7 +27,7 @@ This is an Android application for the classic Hangman game. The game allows pla
 - Add words to the word list
 - Remove words from the word list
 
-![Word List](screenshots/wordlist_screenshot.jpg)
+<img src="screenshots/wordlist_screenshot.jpg" width="300" alt="">
 
 ## Installation
 1. Clone the repository:
