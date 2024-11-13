@@ -7,6 +7,8 @@
 
     <TextView
         android:id="@+id/wordItem"
+        android:textColor="#3b0392"
+        android:fontFamily="@font/firacode_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp" />

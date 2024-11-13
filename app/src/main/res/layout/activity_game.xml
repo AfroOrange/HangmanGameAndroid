@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/firacode_bold"
         android:text="New Game"
+        android:textColor="#3b0392"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -49,6 +51,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="104dp"
         android:text="Solve"
+        android:fontFamily="@font/firacode_bold"
+        android:textColor="#3b0392"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wordGuesserField" />
@@ -59,6 +63,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Letter"
+        android:fontFamily="@font/firacode_bold"
+        android:textColor="#3b0392"
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@id/solveButton"
         app:layout_constraintHorizontal_bias="0.793"
@@ -84,18 +90,20 @@
         android:layout_width="195dp"
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:text=""
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/nicknameField" />
+        app:layout_constraintStart_toEndOf="@+id/livesLabel"
+        app:layout_constraintTop_toTopOf="@+id/livesLabel" />
 
     <Button
         android:id="@+id/mainMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="144dp"
+        android:layout_marginEnd="140dp"
+        android:fontFamily="@font/firacode_bold"
         android:text="Main Menu"
+        android:textColor="#3b0392"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -104,8 +112,10 @@
         android:layout_width="100dp"
         android:layout_height="25dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/firacode_bold"
         android:text=""
+        android:textColor="#3b0392"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -124,33 +134,43 @@
         app:layout_constraintTop_toBottomOf="@+id/hiddenWordField" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="54dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:text="Score"
+        android:id="@+id/scoreLabel"
+        android:layout_width="69dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/firacode_bold"
+        android:text="Score:"
+        android:textColor="#3b0392"
+        android:textSize="20sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/scoreField"
         app:layout_constraintTop_toBottomOf="@+id/newGameButton" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/livesLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/firacode_bold"
         android:text="Lives:"
+        android:textColor="#3b0392"
         android:textSize="15sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nicknameField" />
 
     <TextView
         android:id="@+id/scoreField"
-        android:layout_width="22dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/firacode_bold"
         android:text=""
+        android:textColor="#3b0392"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newGameButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

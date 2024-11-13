@@ -6,4 +6,5 @@
     <string name="score">Score</string>
     <string name="username">Username</string>
     <string name="words_list">Words List</string>
+    <string name="scoreboard_table">Scoreboard Table</string>
 </resources>

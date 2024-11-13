@@ -12,9 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/words_list"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-condensed"
-        android:textColor="#711ff0"
+        android:fontFamily="@font/firacode_bold"
+        android:textColor="#3b0392"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -34,27 +33,33 @@
         android:id="@+id/addWordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginBottom="20dp"
+        android:fontFamily="@font/firacode_bold"
+        android:text="Add Word"
         android:textColor="#3b0392"
         android:textSize="15sp"
-        android:text="Add Word"
-        android:fontFamily="@font/firacode_bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wordsList"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/addWordField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="200dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
-        android:inputType="text"
+        android:fontFamily="@font/firacode_medium"
         android:hint="Add a word"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintEnd_toStartOf="@+id/addWordButton"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wordsList"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

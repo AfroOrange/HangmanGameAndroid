@@ -34,6 +34,8 @@ class GameActivity : AppCompatActivity() {
     private lateinit var newGameButton: Button
     private lateinit var healthBar: TextView
     private lateinit var scoreField: TextView
+    private lateinit var livesLabel: TextView
+    private lateinit var scoreLabel: TextView
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +50,8 @@ class GameActivity : AppCompatActivity() {
         healthBar = findViewById(R.id.healthBar)
         scoreField = findViewById(R.id.scoreField)
         mainMenuButton = findViewById(R.id.mainMenuButton)
+        livesLabel = findViewById(R.id.livesLabel)
+        scoreLabel = findViewById(R.id.scoreLabel)
 
         // Initialize the images container
         imagesContainer = ImagesContainer(this)
@@ -126,7 +130,7 @@ class GameActivity : AppCompatActivity() {
             // if the image index is 9, the game is over
             if (imageIndex == 9) {
                 gameOver()
-                findViewById<TextView>(R.id.hiddenWordField).text = "The word was: ${secretWord.word}"
+                Toast.makeText(this, "You lost! The word was: ${secretWord.word}", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -189,9 +193,7 @@ class GameActivity : AppCompatActivity() {
 
     // Logic for starting a new game
     private fun startGame() {
-        healthBar.text = "\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4"
-        findViewById<ImageView>(R.id.hangmanImage).setImageResource(R.drawable.image1)
-        scoreField.text = "0"
+        resetFields()
 
         try {
             val word = getRandomWord()
@@ -238,5 +240,14 @@ class GameActivity : AppCompatActivity() {
         if (healthBar.text.isNotEmpty()) {
             healthBar.text = healthBar.text.dropLast(2) // Drop the last heart emoji
         }
+    }
+
+    private fun resetFields() {
+        healthBar.text = "\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4"
+        findViewById<ImageView>(R.id.hangmanImage).setImageResource(R.drawable.image1)
+        scoreField.text = "0"
+        livesLabel.visibility = TextView.VISIBLE
+        scoreLabel.visibility = TextView.VISIBLE
+
     }
 }

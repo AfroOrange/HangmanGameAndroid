@@ -11,12 +11,16 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/username"
+        android:textColor="#3b0392"
+        android:fontFamily="@font/firacode_bold"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/userScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#3b0392"
+        android:fontFamily="@font/firacode_bold"
         android:text="@string/score"
         android:textSize="16sp" />
 </LinearLayout>

@@ -9,7 +9,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hangmangameandroid.R
 import com.example.hangmangameandroid.utils.FileUtils
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
