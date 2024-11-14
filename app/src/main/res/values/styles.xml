@@ -1,0 +1,15 @@
+<resources>
+    <style name="AppTheme.Light" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkLight</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
+        <item name="android:background">@color/backgroundColorLight</item>
+        <item name="android:textColor">@color/textColorLight</item>
+        <item name="buttonStyle">@style/ButtonStyle.Light</item> <!-- Custom Button Styling -->
+    </style>
+
+    <style name="ButtonStyle.Light" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/buttonBackgroundColorLight</item>
+        <item name="android:textColor">@color/textColorLight</item>
+    </style>
+</resources>

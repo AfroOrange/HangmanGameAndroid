@@ -18,7 +18,7 @@ import com.example.hangmangameandroid.R
 import com.example.hangmangameandroid.adapters.WordsAdapter
 import com.example.hangmangameandroid.utils.FileUtils
 
-class WordsActivity : AppCompatActivity() {
+class WordsActivity : BaseActivity() {
 
     private lateinit var addWordButton: Button
     private lateinit var addWordField: EditText

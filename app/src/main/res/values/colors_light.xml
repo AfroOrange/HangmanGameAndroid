@@ -1,0 +1,8 @@
+<resources>
+    <color name="colorPrimaryLight">#FF9800</color>
+    <color name="colorPrimaryDarkLight">#F57C00</color>
+    <color name="colorAccentLight">#FF5722</color>
+    <color name="backgroundColorLight">#f3c4b5</color>
+    <color name="textColorLight">#000000</color>
+    <color name="buttonBackgroundColorLight">#FF9800</color>
+</resources>

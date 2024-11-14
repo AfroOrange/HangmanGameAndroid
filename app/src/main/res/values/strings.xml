@@ -7,4 +7,9 @@
     <string name="username">Username</string>
     <string name="words_list">Words List</string>
     <string name="scoreboard_table">Scoreboard Table</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="light_theme">Light Theme</string>
+    <string name="change_to_dark_theme">Change to dark theme</string>
+    <string name="change_to_light_theme">Change to light theme</string>
+    <string name="color_scheme">Color Scheme</string>
 </resources>

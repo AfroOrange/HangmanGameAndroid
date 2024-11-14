@@ -9,7 +9,7 @@ import com.example.hangmangameandroid.R
 import com.example.hangmangameandroid.adapters.UserAdapter
 import com.example.hangmangameandroid.utils.FileUtils
 
-class ScoreboardActivity : AppCompatActivity() {
+class ScoreboardActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scoreboard)

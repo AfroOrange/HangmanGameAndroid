@@ -11,7 +11,7 @@ import com.example.hangmangameandroid.R
 import com.example.hangmangameandroid.utils.FileUtils
 import com.example.hangmangameandroid.model.Users
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

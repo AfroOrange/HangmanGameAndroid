@@ -3,29 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8d94d9"
     tools:context=".ui.GameActivity"
     tools:layout_editor_absoluteX="-132dp"
     tools:layout_editor_absoluteY="0dp">
-
-    <Button
-        android:id="@+id/newGameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/firacode_bold"
-        android:text="New Game"
-        android:textColor="#3b0392"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/hangmanImage"
         android:layout_width="263dp"
         android:layout_height="250dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="104dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainMenuButton"
@@ -35,7 +21,7 @@
         android:id="@+id/wordGuesserField"
         android:layout_width="295dp"
         android:layout_height="51dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="172dp"
         android:ems="10"
         android:hint="@string/introduce_a_letter_or_the_word"
         android:inputType="text"
@@ -44,42 +30,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hangmanImage" />
 
-    <Button
-        android:id="@+id/solveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="104dp"
-        android:text="Solve"
-        android:fontFamily="@font/firacode_bold"
-        android:textColor="#3b0392"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wordGuesserField" />
-
-    <Button
-        android:id="@+id/letterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Letter"
-        android:fontFamily="@font/firacode_bold"
-        android:textColor="#3b0392"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@id/solveButton"
-        app:layout_constraintHorizontal_bias="0.793"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wordGuesserField" />
 
     <TextView
         android:id="@+id/hiddenWordField"
         android:layout_width="409dp"
         android:layout_height="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text=""
         android:textAlignment="center"
         android:textSize="40sp"
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hangmanImage"
@@ -87,36 +48,26 @@
 
     <TextView
         android:id="@+id/healthBar"
-        android:layout_width="195dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:text=""
-        app:layout_constraintStart_toEndOf="@+id/livesLabel"
-        app:layout_constraintTop_toTopOf="@+id/livesLabel" />
-
-    <Button
-        android:id="@+id/mainMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="140dp"
-        android:fontFamily="@font/firacode_bold"
-        android:text="Main Menu"
-        android:textColor="#3b0392"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="@color/textColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nicknameField" />
 
     <TextView
         android:id="@+id/nicknameField"
-        android:layout_width="100dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="88dp"
         android:fontFamily="@font/firacode_bold"
         android:text=""
-        android:textColor="#3b0392"
-        android:textSize="15sp"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -129,48 +80,104 @@
         android:text=""
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@+id/wordGuesserField"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hiddenWordField" />
+        app:layout_constraintTop_toBottomOf="@+id/hiddenWordField"
+        app:layout_constraintVertical_bias="0.088" />
 
     <TextView
         android:id="@+id/scoreLabel"
         android:layout_width="69dp"
         android:layout_height="29dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="12dp"
         android:fontFamily="@font/firacode_bold"
         android:text="Score:"
-        android:textColor="#3b0392"
-        android:textSize="20sp"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/scoreField"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/healthBar"
         app:layout_constraintTop_toBottomOf="@+id/newGameButton" />
-
-    <TextView
-        android:id="@+id/livesLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/firacode_bold"
-        android:text="Lives:"
-        android:textColor="#3b0392"
-        android:textSize="15sp"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nicknameField" />
 
     <TextView
         android:id="@+id/scoreField"
-        android:layout_width="24dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/firacode_bold"
         android:text=""
-        android:textColor="#3b0392"
-        android:textSize="20sp"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newGameButton" />
+
+    <!--- Buttons -->
+    <Button
+        android:id="@+id/newGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/colorPrimaryDark"
+        android:fontFamily="@font/firacode_bold"
+        android:text="New Game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/solveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="104dp"
+        android:background="?attr/colorPrimaryDark"
+        android:fontFamily="@font/firacode_bold"
+        android:text="Solve"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wordGuesserField" />
+
+    <Button
+        android:id="@+id/letterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="?attr/colorPrimaryDark"
+        android:fontFamily="@font/firacode_bold"
+        android:text="Letter"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@id/solveButton"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wordGuesserField" />
+
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="140dp"
+        android:background="?attr/colorPrimaryDark"
+        android:fontFamily="@font/firacode_bold"
+        android:text="Main Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--- View to separate the buttons from the rest of the layout -->
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainMenuButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

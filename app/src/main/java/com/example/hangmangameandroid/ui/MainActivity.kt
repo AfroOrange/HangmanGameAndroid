@@ -2,6 +2,7 @@ package com.example.hangmangameandroid.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.hangmangameandroid.R
 import com.example.hangmangameandroid.utils.FileUtils
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     // In MainActivity
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         // actions for the buttons
         val playButton = findViewById<Button>(R.id.newGameButton)
         playButton.setOnClickListener {
+
+            Log.d("!=!=!=", "Play button clicked")
 
             //check if there are words in the json before playing the game
             val words = FileUtils.readWords(this)
@@ -55,6 +58,13 @@ class MainActivity : AppCompatActivity() {
         wordsButton.setOnClickListener {
             // Start the WordsActivity
             val intent = Intent(this, WordsActivity::class.java)
+            startActivity(intent)
+        }
+
+        val settingsButton = findViewById<Button>(R.id.settingsButton)
+        settingsButton.setOnClickListener {
+            // Start the SettingsActivity
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
 

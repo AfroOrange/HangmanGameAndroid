@@ -17,7 +17,7 @@ import com.example.hangmangameandroid.model.SecretWord
 import com.example.hangmangameandroid.utils.FileUtils
 import kotlin.random.Random
 
-class GameActivity : AppCompatActivity() {
+class GameActivity : BaseActivity() {
 
     // Variables
     private lateinit var wordList: List<String>
@@ -34,7 +34,6 @@ class GameActivity : AppCompatActivity() {
     private lateinit var newGameButton: Button
     private lateinit var healthBar: TextView
     private lateinit var scoreField: TextView
-    private lateinit var livesLabel: TextView
     private lateinit var scoreLabel: TextView
 
     @SuppressLint("SetTextI18n")
@@ -50,7 +49,6 @@ class GameActivity : AppCompatActivity() {
         healthBar = findViewById(R.id.healthBar)
         scoreField = findViewById(R.id.scoreField)
         mainMenuButton = findViewById(R.id.mainMenuButton)
-        livesLabel = findViewById(R.id.livesLabel)
         scoreLabel = findViewById(R.id.scoreLabel)
 
         // Initialize the images container
@@ -246,7 +244,6 @@ class GameActivity : AppCompatActivity() {
         healthBar.text = "\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4\uD83D\uDDA4"
         findViewById<ImageView>(R.id.hangmanImage).setImageResource(R.drawable.image1)
         scoreField.text = "0"
-        livesLabel.visibility = TextView.VISIBLE
         scoreLabel.visibility = TextView.VISIBLE
 
     }
