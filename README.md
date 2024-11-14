@@ -3,6 +3,29 @@
 ## Overview
 This is an Android application for the classic Hangman game. The game allows players to guess letters to uncover a hidden word. Players have a limited number of incorrect guesses before the game is over.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [License](#license)
+
+## Installation
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/AfroOrange/hangman-game-android.git
+    ```
+2. Open the project in Android Studio.
+3. Build and run the project on an emulator or physical device.
+
+4. ## Usage
+1. Enter your nickname on the login screen.
+2. Click "New Game" to start a new game.
+3. Guess letters by entering them in the input field and clicking the "Guess" button.
+4. The game will update the hidden word and hangman image based on your guesses.
+5. If you guess the word correctly, you win. If you reach the maximum number of incorrect guesses, the game is over.
+6. Click "New Game" to start a new game or "Main Menu" to return to the main menu.
+
 ## Features
 - Login screen to enter a player nickname
 
@@ -28,22 +51,6 @@ This is an Android application for the classic Hangman game. The game allows pla
 - Remove words from the word list
 
 <img src="screenshots/wordlist_screenshot.jpg" width="300" alt="">
-
-## Installation
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/AfroOrange/hangman-game-android.git
-    ```
-2. Open the project in Android Studio.
-3. Build and run the project on an emulator or physical device.
-
-## Usage
-1. Enter your nickname on the login screen.
-2. Click "New Game" to start a new game.
-3. Guess letters by entering them in the input field and clicking the "Guess" button.
-4. The game will update the hidden word and hangman image based on your guesses.
-5. If you guess the word correctly, you win. If you reach the maximum number of incorrect guesses, the game is over.
-6. Click "New Game" to start a new game or "Main Menu" to return to the main menu.
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
