@@ -18,7 +18,7 @@ This is an Android application for the classic Hangman game. The game allows pla
 2. Open the project in Android Studio.
 3. Build and run the project on an emulator or physical device.
 
-4. ## Usage
+## Usage
 1. Enter your nickname on the login screen.
 2. Click "New Game" to start a new game.
 3. Guess letters by entering them in the input field and clicking the "Guess" button.
