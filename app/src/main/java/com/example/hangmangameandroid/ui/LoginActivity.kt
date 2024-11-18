@@ -6,19 +6,25 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.hangmangameandroid.R
 import com.example.hangmangameandroid.utils.FileUtils
 import com.example.hangmangameandroid.model.Users
+import com.example.hangmangameandroid.utils.BackGroundMusic
 
 class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         val loginButton = findViewById<Button>(R.id.loginButton)
         val nicknameInput = findViewById<EditText>(R.id.loginInputText)
+
+        if (BackGroundMusic.isMusicEnabled(this)) {
+            BackGroundMusic.initialize(this)
+            BackGroundMusic.start()
+        }
 
         // logic for the login button
         loginButton.setOnClickListener {
