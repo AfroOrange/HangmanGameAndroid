@@ -10,11 +10,32 @@ class SettingsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        findViewById<ImageButton>(R.id.lightThemeButton).setOnClickListener {
+        val lightThemeButton = findViewById<ImageButton>(R.id.lightThemeButton)
+        val darkThemeButton = findViewById<ImageButton>(R.id.darkThemeButton)
+
+        // Retrieve the current theme selection from SharedPreferences
+        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+        val isDarkTheme = sharedPreferences.getBoolean("isDarkTheme", false)
+
+        // Set initial selected state based on current theme
+        if (isDarkTheme) {
+            darkThemeButton.isSelected = true
+            lightThemeButton.isSelected = false
+        } else {
+            lightThemeButton.isSelected = true
+            darkThemeButton.isSelected = false
+        }
+
+        // Click listeners to change theme
+        lightThemeButton.setOnClickListener {
+            lightThemeButton.isSelected = true
+            darkThemeButton.isSelected = false
             switchTheme(false)
         }
 
-        findViewById<ImageButton>(R.id.darkThemeButton).setOnClickListener {
+        darkThemeButton.setOnClickListener {
+            lightThemeButton.isSelected = false
+            darkThemeButton.isSelected = true
             switchTheme(true)
         }
     }

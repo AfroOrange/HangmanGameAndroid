@@ -3,6 +3,6 @@
     <solid android:color="@android:color/transparent" />
     <stroke
         android:width="10dp"
-        android:color="#000000" /> <!-- Black border -->
-    <corners android:radius="8dp" />
+        android:color="#999FFF" /> <!-- Gold border when selected -->
+    <corners android:radius="8dp" /> <!-- Optional: round corners -->
 </shape>
