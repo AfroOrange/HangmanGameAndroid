@@ -39,7 +39,4 @@ object BackGroundMusic {
             apply()
         }
     }
-    fun isInitialized(): Boolean {
-        return mediaPlayer != null
-    }
 }
