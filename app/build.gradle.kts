@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.core.v462)
     implementation(libs.gson)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

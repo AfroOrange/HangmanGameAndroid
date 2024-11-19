@@ -1,5 +1,7 @@
 [versions]
 agp = "8.6.0"
+core = "4.6.1"
+coreVersion = "4.6.2"
 gson = "2.10.1"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
@@ -14,6 +16,8 @@ firebaseCrashlyticsBuildtools = "3.0.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+core = { module = "io.noties.markwon:core", version.ref = "core" }
+core-v462 = { module = "io.noties.markwon:core", version.ref = "coreVersion" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

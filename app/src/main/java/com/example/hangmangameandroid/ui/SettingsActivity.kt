@@ -1,6 +1,7 @@
 package com.example.hangmangameandroid.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.SeekBar
@@ -25,6 +26,7 @@ class SettingsActivity : BaseActivity() {
         val volumeSlider = findViewById<SeekBar>(R.id.volumeSlider)
         val musicSwitch = findViewById<Switch>(R.id.musicSwitch)
         val musicToggleText = findViewById<TextView>(R.id.musicToggleText)
+        val helpButton = findViewById<ImageButton>(R.id.helpButton)
 
         // Retrieve the current theme selection from SharedPreferences
         val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
@@ -93,6 +95,12 @@ class SettingsActivity : BaseActivity() {
                 BackGroundMusic.stop()
                 BackGroundMusic.setMusicEnabled(this, false)
             }
+        }
+
+        // Help button listener
+        helpButton.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            startActivity(intent)
         }
     }
 
