@@ -1,7 +1,7 @@
 <resources>
     <!-- Soften the dark background color -->
-    <color name="backgroundColor">#6E7BA2</color> <!-- Example of a lighter grayish-blue -->
-    <color name="buttonTextColor">#3b0392</color> <!-- You can adjust this as needed -->
-    <color name="buttonBackgroundColor">#8F69C2</color>
+    <color name="backgroundColor">#B560FF</color> <!-- Example of a lighter grayish-blue -->
+    <color name="buttonTextColor">#723CE2</color> <!-- You can adjust this as needed -->
+    <color name="buttonBackgroundColor">#6F5D85</color>
     <color name="textColor">#FFFFFF</color> <!-- Keep text white for contrast -->
 </resources>

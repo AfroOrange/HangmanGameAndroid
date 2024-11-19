@@ -4,6 +4,6 @@
         <item name="colorPrimaryDark">@color/backgroundColor</item>
         <item name="colorAccent">@color/buttonTextColor</item>
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:background">#4E3581</item> <!-- Use the lighter color -->
+        <item name="android:background">#4E3581</item>
     </style>
 </resources>

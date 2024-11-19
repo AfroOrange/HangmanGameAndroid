@@ -5,4 +5,5 @@
     <color name="backgroundColorLight">#f3c4b5</color>
     <color name="textColorLight">#000000</color>
     <color name="buttonBackgroundColorLight">#FF9800</color>
+    <color name="splashBackgroundColor">#ffffff</color>
 </resources>

@@ -91,7 +91,8 @@ class WordsActivity : BaseActivity() {
     ) {
         super.onCreateContextMenu(menu, v, menuInfo)
         if (v?.id == R.id.wordsList) {
-            menu?.add(0, v.id, 0, "Delete")
+            val inflater = menuInflater
+            inflater.inflate(R.menu.context_menu, menu)
         }
     }
 

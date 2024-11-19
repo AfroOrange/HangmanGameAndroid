@@ -25,7 +25,6 @@
         android:text="@string/scoreboard_table"
         android:textStyle="bold"
         android:fontFamily="@font/firacode_bold"
-        android:textColor="#3b0392"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
