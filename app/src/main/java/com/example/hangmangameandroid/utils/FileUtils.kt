@@ -57,4 +57,13 @@ object FileUtils {
         }
         return emptyList()
     }
+
+    fun updateScore(context: Context, nickname: String, newScore: Int) {
+        val users = readUsers(context)
+        val user = users.find { it.name == nickname }
+        if (user != null) {
+            user.score += newScore // Update the score adding the new score to the existing one
+            writeUsers(context, users)
+        }
+    }
 }

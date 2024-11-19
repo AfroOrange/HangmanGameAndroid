@@ -28,16 +28,29 @@ class LoginActivity : BaseActivity() {
 
         // logic for the login button
         loginButton.setOnClickListener {
+            // Define the regex pattern for the nickname
+            val nicknamePattern = "^[a-zA-Z0-9_]{3,10}$"
             val nickname = nicknameInput.text.toString()
 
-            if (nickname.isNotEmpty()) {
-                addUserToJson(nickname)  // Add user to JSON file
-                val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("NICKNAME", nickname)  // Pass the nickname to MainActivity
-                startActivity(intent)
+            // Validate the nickname against the pattern
+            if (nickname.matches(nicknamePattern.toRegex())) {
+                // Check if the nickname is already in the JSON file
+                val users = FileUtils.readUsers(this)
+                val userExists = users.any { it.name == nickname }
+
+                if (userExists) {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("NICKNAME", nickname)
+                    startActivity(intent)
+                } else {
+                    addUserToJson(nickname)
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("NICKNAME", nickname)  // Pass the nickname to MainActivity
+                    startActivity(intent)
+                }
             } else {
-                // Show a message if the nickname is empty
-                Toast.makeText(this, "Please enter a nickname", Toast.LENGTH_SHORT).show()
+                // Show a message if the nickname is invalid
+                Toast.makeText(this, "Invalid nickname. Please use 3-10 alphanumeric characters or underscores.", Toast.LENGTH_SHORT).show()
             }
         }
     }

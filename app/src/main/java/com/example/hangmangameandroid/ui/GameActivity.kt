@@ -25,6 +25,7 @@ class GameActivity : BaseActivity() {
     private lateinit var secretWord: SecretWord
     private lateinit var imagesContainer: ImagesContainer
     private var imageIndex = 1
+    private var wrongGuessedWords = mutableListOf<String>()
 
     // UI elements
     private lateinit var mainMenuButton: Button
@@ -106,31 +107,53 @@ class GameActivity : BaseActivity() {
         val wordGuessed = wordInput.text.toString()
         var score = scoreField.text.toString().toInt()
 
-        if (secretWord.guessWord(wordGuessed)) {
-            score += 50
-            scoreField.text = score.toString()
-            findViewById<TextView>(R.id.hiddenWordField).text = "You won!"
-            gameOver()
+       if (wordGuessed.isNotEmpty() && !wrongGuessedWords.contains(wordGuessed)) {
+           if(secretWord.guessWord(wordGuessed) || secretWord.word.equals(wordGuessed, ignoreCase = true)) {
+               score += 50
+               scoreField.text = score.toString()
+               findViewById<TextView>(R.id.hiddenWordField).text = "You won!"
 
-        } else {
+               // Update the score in the JSON file
+               FileUtils.updateScore(this, intent.getStringExtra("NICKNAME")!!, score)
+               gameOver()
 
-            // subtract 1 from the score
-            score -= 1
-            if (score >= 1) {
-                scoreField.text = score.toString()
-            }
+           } else {
 
-            // Update the index and the health bar
-            healthBarUpdate()
-            imageIndex += 1
-            findViewById<ImageView>(R.id.hangmanImage).setImageDrawable(imagesContainer.getImage(imageIndex))
+                // Add the wrong guessed word to the list
+                wrongGuessedWords.add(wordGuessed)
 
-            // if the image index is 9, the game is over
-            if (imageIndex == 9) {
-                gameOver()
-                Toast.makeText(this, "You lost! The word was: ${secretWord.word}", Toast.LENGTH_SHORT).show()
-            }
-        }
+               // subtract 1 from the score
+               score -= 1
+               if (score >= 1) {
+                   scoreField.text = score.toString()
+               }
+
+               // Update the index and the health bar
+               healthBarUpdate()
+               imageIndex += 1
+               findViewById<ImageView>(R.id.hangmanImage).setImageDrawable(
+                   imagesContainer.getImage(
+                       imageIndex
+                   )
+               )
+
+               // if the image index is 9, the game is over
+               if (imageIndex == 9) {
+                   score -= 50
+                   // Update the score in the JSON file
+                   FileUtils.updateScore(this, intent.getStringExtra("NICKNAME")!!, score)
+                   gameOver()
+                   Toast.makeText(
+                       this,
+                       "You lost! The word was: ${secretWord.word}",
+                       Toast.LENGTH_SHORT
+                   ).show()
+               }
+               wordGuesserField.text.clear()
+           }
+       } else {
+              Toast.makeText(this, "Word is not valid or already guessed", Toast.LENGTH_SHORT).show()
+       }
     }
 
     // Logic for guessing the word
@@ -152,6 +175,9 @@ class GameActivity : BaseActivity() {
                     }
 
                     if (imageIndex == 9) {
+                        score -= 50
+                        // Update the score in the JSON file
+                        FileUtils.updateScore(this, intent.getStringExtra("NICKNAME")!!, score)
                         gameOver()
                         findViewById<TextView>(R.id.hiddenWordField).text = "The word was: ${secretWord.word}"
                     }
@@ -162,6 +188,8 @@ class GameActivity : BaseActivity() {
 
                     if (!secretWord.hiddenWord.contains('_')) {
                         findViewById<TextView>(R.id.hiddenWordField).text = "You won!"
+                        score += 50
+                        FileUtils.updateScore(this, intent.getStringExtra("NICKNAME")!!, score)
                         gameOver()
                     }
                 }
@@ -181,12 +209,14 @@ class GameActivity : BaseActivity() {
         scoreField.text = score.toString()
     }
 
-    // Logic for ending the game
+    // Clear field and hide buttons
     private fun gameOver() {
+        wordGuesserField.text.clear()
         letterButton.visibility = Button.INVISIBLE
         solveButton.visibility = Button.INVISIBLE
         wordGuesserField.visibility = EditText.INVISIBLE
         newGameButton.visibility = Button.VISIBLE
+        wrongGuessedWords.clear()
     }
 
     // Logic for starting a new game
