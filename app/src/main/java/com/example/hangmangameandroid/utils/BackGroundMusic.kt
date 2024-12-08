@@ -9,13 +9,14 @@ object BackGroundMusic {
 
     private const val PREFS_NAME = "music_prefs"
     private const val MUSIC_ENABLED_KEY = "music_enabled"
-    private var mediaPlayer: MediaPlayer? = null
+    var mediaPlayer: MediaPlayer? = null
 
-    fun initialize(context: Context) {
-        if (mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(context, R.raw.login_background_music_oria)
-            mediaPlayer?.isLooping = true
+    fun initialize(context: Context, trackResId: Int) {
+        if (mediaPlayer != null) {
+            mediaPlayer?.release()
         }
+        mediaPlayer = MediaPlayer.create(context, trackResId)
+        mediaPlayer?.isLooping = true
     }
 
     fun start() {
@@ -24,7 +25,7 @@ object BackGroundMusic {
 
     fun stop() {
         mediaPlayer?.stop()
-        mediaPlayer?.prepare()
+        mediaPlayer?.reset()
     }
 
     fun isMusicEnabled(context: Context): Boolean {

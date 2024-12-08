@@ -22,7 +22,7 @@ class LoginActivity : BaseActivity() {
         val nicknameInput = findViewById<EditText>(R.id.loginInputText)
 
         if (BackGroundMusic.isMusicEnabled(this)) {
-            BackGroundMusic.initialize(this)
+            BackGroundMusic.initialize(this, R.raw.login_background_music_oria)
             BackGroundMusic.start()
         }
 

@@ -1,9 +1,4 @@
 # About the App
----------------------------------------------------
-## Uses
-- **Entertainment**: Enjoy a classic word-guessing game.
-- **Education**: Improve your vocabulary and spelling skills.
-- **Challenge**: Compete with friends and family to see who can guess the word with the fewest mistakes.
 
 ## How to Play
 1. **Start the Game**: Launch the app and press the "Start Game" button.
@@ -14,5 +9,4 @@
 6. **Win or Lose**: Continue guessing letters until you either guess the word correctly (win) or the hangman is fully drawn (lose).
 
 ## Author
-- **Afro Orange**
-- [GitHub Repository](https://github.com/AfroOrange)
+- [**Afro Orange**](https://github.com/AfroOrange)
